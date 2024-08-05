@@ -1,5 +1,5 @@
 <h1>Home Page</h1>
-<h3>User name is {{$name}} and user skills are {{$skills}}</h3>
+<h3>User name is {{$username}} and user skills are {{$userage}}</h3>
 
 @php 
     $salary = 40000;
