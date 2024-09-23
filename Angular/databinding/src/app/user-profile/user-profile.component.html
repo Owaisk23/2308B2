@@ -1,0 +1,11 @@
+<h1>Name - {{name}}</h1>
+<h1>Designation - {{designation}}</h1>
+<h1>Salary - {{salary}}</h1>
+
+<!-- Property Binding -->
+ <button [disabled]="isBtnDisable">Click Here</button>
+
+ <!-- Two way property binding -->
+ <h1>Input Value is: {{inputVal}}</h1>
+ <!-- <input type="text" [value]="inputVal" (input)="onChangeFunc($event)"> -->
+ <input type="text" [(ngModel)]="inputVal">
