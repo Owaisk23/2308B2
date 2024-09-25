@@ -1,11 +1,31 @@
-<h1>Name - {{name}}</h1>
+<h1>User - {{name}}</h1>
+
+<!-- <h1>Name - {{name}}</h1>
 <h1>Designation - {{designation}}</h1>
-<h1>Salary - {{salary}}</h1>
+<h1>Salary - {{salary}}</h1> -->
 
 <!-- Property Binding -->
- <button [disabled]="isBtnDisable">Click Here</button>
+ <!-- <button [disabled]="isBtnDisable">Click Here</button> -->
 
  <!-- Two way property binding -->
- <h1>Input Value is: {{inputVal}}</h1>
+ <!-- <h1>Input Value is: {{inputVal}}</h1> -->
  <!-- <input type="text" [value]="inputVal" (input)="onChangeFunc($event)"> -->
- <input type="text" [(ngModel)]="inputVal">
+ <!-- <input type="text" [(ngModel)]="inputVal">
+
+ <div>
+    @for(user of users; track user.name){
+        @if(user.age > 24){
+            <h2>Student Name is {{user.name}} || Eligible - {{user.eligibleStatus?"Eligble":"Better Luck next time"}} || Age is {{user.age}} </h2>
+        }@else{
+            <h2>Student Name is {{user.name}} || Eligible - {{user.eligibleStatus?"Eligble":"Better Luck next time"}} || Age is hidden </h2>
+        }
+    }
+ </div>
+ <hr>
+ <div *ngFor="let user of users">
+    <h2 *ngIf="user.age > 24;else elseBlock">Student Name is {{user.name}} || Eligible - {{user.eligibleStatus?"Eligble":"Better Luck next time"}} || Age is {{user.age}} </h2>
+
+    <ng-template #elseBlock>
+        <h2>Student Name is {{user.name}} || Eligible - {{user.eligibleStatus?"Eligble":"Better Luck next time"}} || Age is hidden </h2>
+    </ng-template>
+ </div> -->
