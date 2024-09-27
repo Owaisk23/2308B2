@@ -1,6 +1,9 @@
 <h1>Welcome Page</h1>
-<app-user-profile userName="Hussain"></app-user-profile>
-<app-user-profile userName="Affan"></app-user-profile>
-<app-user-profile userName="Rubbas"></app-user-profile>
-<app-user-profile userName="Neha"></app-user-profile>
+<app-user-profile *ngFor="let u of users"
+[userName]="u.name"
+[eligibleStatus]="u.eligibleStatus"
+[age]="u.age"></app-user-profile>
+<!-- <app-user-profile userName="Affan" eligibleStatus=false age="27"></app-user-profile>
+<app-user-profile userName="Rubbas" eligibleStatus=false age="25"></app-user-profile>
+<app-user-profile userName="Neha" eligibleStatus=true age="21"></app-user-profile> -->
 
