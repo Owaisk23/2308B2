@@ -95,6 +95,21 @@ SELECT MIN(salary) as min_salary FROM Employees;
 
 SELECT MAX(salary) as max_salary FROM Employees;
 
+SELECT SUM(salary) as total_salary FROM Employees;
+
+SELECT AVG(salary) as average_salary FROM Employees;
+
+SELECT CONCAT(empName, ' lives in ', city, ' is designated as ', designation, ' with salary of ', salary) FROM Employees;
+
+SELECT empName, salary from Employees where salary > (SELECT AVG(salary) as average_salary FROM Employees);
+
+-- Group By Clause
+
+SELECT city, COUNT(id) workers From Employees GROUP BY city;
+
+SELECT city, MAX(salary) max_salary_paid From Employees GROUP BY city;
+
+SELECT city, SUM(salary) max_salary_paid From Employees GROUP BY city;
 
 
 
