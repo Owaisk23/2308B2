@@ -127,7 +127,7 @@ CREATE TABLE Departments(
 
 INSERT INTO Departments VALUES ('HR'), ('SRO'), ('Academics'), ('Techroom'), ('Coordinator');
 INSERT INTO Departments VALUES ('Examination');
-
+INSERT INTO Departments VALUES ('Accounts'), ('Admin');
 SELECT * FROM Employees;
 
 TRUNCATE TABLE Employees;
@@ -161,3 +161,19 @@ INSERT INTO Employees(empName,designation,salary,city,deptId) VALUES
 ('Rabia', 'Accounts', 9999, 'Larkana', null),
 ('Yusra', 'Admin', 399799, 'Khi', null),
 ('Ali', 'Workers', 329999, 'Hyd', null);
+
+-- INNER JOIN
+SELECT emp.*,d.DName FROM Employees as emp INNER JOIN Departments as d on emp.deptId = d.deptId;
+
+-- LEFT JOIN
+SELECT * FROM Employees as emp LEFT JOIN Departments as d on emp.deptId = d.deptId;
+
+SELECT * FROM Departments as d LEFT JOIN Employees as emp on emp.deptId = d.deptId;
+
+-- RIGHT JOIN
+SELECT * FROM Employees as emp RIGHT JOIN Departments as d on emp.deptId = d.deptId;
+
+-- FULL OUTER JOIN
+
+SELECT emp.*,d.DName FROM Employees as emp FULL OUTER JOIN Departments as d on emp.deptId = d.deptId;
+
