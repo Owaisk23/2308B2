@@ -177,3 +177,79 @@ SELECT * FROM Employees as emp RIGHT JOIN Departments as d on emp.deptId = d.dep
 
 SELECT emp.*,d.DName FROM Employees as emp FULL OUTER JOIN Departments as d on emp.deptId = d.deptId;
 
+-- VIEW
+CREATE VIEW [empDetails]
+AS
+SELECT id, empName, designation FROM Employees;
+
+SELECT * FROM empDetails;
+
+CREATE VIEW [deptName]
+AS
+SELECT DName FROM Departments;
+
+SELECT * FROM deptName;
+
+CREATE VIEW [empDeptDetails]
+AS
+SELECT emp.*,d.DName FROM Employees as emp INNER JOIN Departments as d on emp.deptId = d.deptId;
+
+SELECT * FROM empDeptDetails;
+
+DELETE FROM Employees where id = 3;
+
+-- DATA CONTROL LANGUAGE
+
+SELECT * FROM sys.sql_logins;
+
+CREATE LOGIN HR_EMP with Password = '12345';
+CREATE USER HR_EMP FROM LOGIN HR_EMP;
+
+
+select * from sys.sql_logins;
+
+GRANT SELECT on dbo.Employees TO HR_EMP;
+
+GRANT INSERT, DELETE on dbo.Employees TO HR_EMP;
+
+-- REVOKE(To take back the permission)
+REVOKE DELETE on dbo.Employees TO HR_EMP;
+
+
+
+-- PROCEDURES
+
+CREATE PROCEDURE SeeEmp
+AS
+BEGIN
+SELECT * FROM Employees
+END;
+
+SeeEmp;
+
+
+ALTER PROCEDURE SeeEmp
+AS
+BEGIN
+SELECT * FROM Employees where city = 'KHI'; 
+END;
+
+SeeEmp;
+
+CREATE PROCEDURE AddEmp @Name varchar(255), @desig varchar(70), @sal int, @city varchar(60), @dId int
+AS
+BEGIN
+INSERT INTO Employees VALUES(@Name, @desig, @sal, @city, @dId)
+SELECT * FROM Employees
+END;
+
+AddEmp @Name='Haseeb', @desig='Software Developer', @sal=50000, @city='Karachi', @dId=2;
+
+AddEmp @Name='Ali Zaib', @desig='MERN Developer', @sal=250000, @city='Karachi', @dId=3;
+
+DROP PROCEDURE SeeEmp;
+
+SeeEmp;
+
+DELETE FROM Employees where id = 16;
+
