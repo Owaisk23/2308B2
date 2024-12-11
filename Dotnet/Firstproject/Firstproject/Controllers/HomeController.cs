@@ -15,10 +15,18 @@ namespace Firstproject.Controllers
 
         public IActionResult Index()
         {
+
+            @ViewBag.car = "Porsche";
+            @ViewData["carName"] = "BMW M5";
+
+            @TempData["carDelivery"] = "Success";
+            @TempData.Keep();
+
             return View();
         }
         public IActionResult About()
         {
+            @TempData.Keep();
             return View();
         }
 
