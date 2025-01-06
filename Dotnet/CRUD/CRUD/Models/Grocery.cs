@@ -12,4 +12,10 @@ public partial class Grocery
     public string Desc { get; set; } = null!;
 
     public int Price { get; set; }
+
+    public string Image { get; set; } = null!;
+
+    public int? CatId { get; set; }
+
+    public virtual Category? Cat { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿using CRUD.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
 
 namespace CRUD.Controllers
@@ -46,7 +47,41 @@ namespace CRUD.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Create()
+        {
+            ViewBag.CatId = new SelectList(db.Categories, "CatId", "CatName");
 
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Grocery item, IFormFile file)
+        {
+            var imageName = DateTime.Now.ToString("yymmddhhmmss");//24074455454454
+            imageName += Path.GetFileName(file.FileName);//24074455454454apple.png
+
+            string imagepath = Path.Combine(HttpContext.Request.PathBase.Value, "wwwroot/Uploads");
+            var imagevalue = Path.Combine(imagepath, imageName);
+
+            using (var stream = new FileStream(imagevalue, FileMode.Create))
+            {
+
+                file.CopyTo(stream);
+
+            }
+
+            var dbimage = Path.Combine("/Uploads", imageName);//   /uploads/240715343434apple.png
+            item.Image = dbimage;
+
+            db.Groceries.Add(item);
+            db.SaveChanges();
+
+
+            ViewBag.CatId = new SelectList(db.Categories, "CatId", "CatName");
+            return RedirectToAction("Index");
+        }
         public IActionResult EditProduct(int id)
         {
             var product = db.Groceries.FirstOrDefault(x => x.Id == id);

@@ -8,7 +8,7 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="AddProduct">Create New</a>
+    <a asp-action="Create">Create New</a>
 </p>
 <form asp-action="Index">
     <input type="search" name="searchQuery" value="@ViewData["SearchQuery"]" />
@@ -27,6 +27,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -42,6 +45,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
             </td>
+                <td>
+                    <img src="@Html.DisplayFor(modelItem => item.Image)" width="40" height="40" class="rounded-circle" />
+                </td>
             <td>
                     <a asp-action="EditProduct" asp-route-id="@item.Id">Edit</a> |
                     <a asp-action="DetailProduct" asp-route-id="@item.Id">Details</a> |
