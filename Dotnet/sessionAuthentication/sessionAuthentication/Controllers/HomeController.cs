@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using sessionAuthentication.Models;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SessionAuthentication.Models;
 using System.Diagnostics;
 
-namespace sessionAuthentication.Controllers
+namespace SessionAuthentication.Controllers
 {
     public class HomeController : Controller
     {
@@ -12,18 +13,10 @@ namespace sessionAuthentication.Controllers
         {
             _logger = logger;
         }
-
+        [Authorize(Roles = "User")]
         public IActionResult Index()
         {
-            if (HttpContext.Session.GetString("role") == "user")
-            {
-                ViewBag.adminEmail = HttpContext.Session.GetString("userEmail");
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login", "Admin");
-            }
+            return View();
         }
 
         public IActionResult Privacy()

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace sessionAuthentication.Controllers
+namespace SessionAuthentication.Controllers
 {
     public class ClientController : Controller
     {
@@ -8,7 +8,7 @@ namespace sessionAuthentication.Controllers
         {
             if (HttpContext.Session.GetString("role") == "client")
             {
-                ViewBag.adminEmail = HttpContext.Session.GetString("clientEmail");
+
                 return View();
             }
             else
