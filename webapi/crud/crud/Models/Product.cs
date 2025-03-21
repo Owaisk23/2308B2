@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace crud.Models;
 
-public partial class Crud
+public partial class Product
 {
     public int Id { get; set; }
 
