@@ -41,18 +41,62 @@ void main(){
   //Adding new element in List
   carNames.add("Tesla");
 
-  //Removing element from List
-  carNames.remove("BMW");
-  print("Car Names: $carNames");
+  //update
+  carNames[0] = "Tesla Model S";
+  print("Updated Car Names: $carNames");
 
-  //User Input
-  stdout.write("Enter your name: ");
-  // String? userName = stdin.readLineSync();
-  String userName = stdin.readLineSync()!;
-  print("Hello, $userName!");
+  //Set: Ye ik unordered collection hai, ye duplicate allow nahi karta
+  Set<String> stdSets = {"Abdullah", "Ayan", "Usman", "Hassan", "Ali", "Asif"};
 
-  stdout.write("Enter your age: ");
-  int userAge = int.parse(stdin.readLineSync()!);
-  print("Age is: $userAge");
+  
+
+  //Adding new element in Set
+  stdSets.add("Mustafa");
+  // stdSets.add("Ayan");
+  print("Set: $stdSets");
+
+  //Removing element from Set
+  stdSets.remove("Usman");
+  print("Set after removing Usman: $stdSets");
+
+  // //Removing element from List
+  // carNames.remove("BMW");
+  // print("Car Names: $carNames");
+
+  // //User Input
+  // stdout.write("Enter your name: ");
+  // // String? userName = stdin.readLineSync();
+  // String userName = stdin.readLineSync()!;
+  // print("Hello, $userName!");
+
+  // stdout.write("Enter your age: ");
+  // int userAge = int.parse(stdin.readLineSync()!);
+  // print("Age is: $userAge");
+
+  // //Map: Ye ik key-value pair hai
+  Map<String, String> user = {
+    "name": "John Doe",
+    "age": "23",
+    "height": "5.9",
+    "salary": "50000"
+  };
+
+  // print("User: $user");
+  print("User Name: ${user['name']}");
+  print("User Name: ${user['age']}");
+  print("User Name: ${user['salary']}");
+
+  //Adding new element in Map
+  user["address"] = "123 Main St";
+  
+
+  //Updating element in Map
+  user["name"] = "Shakoor Bhai";
+  
+  //Removing element from Map
+  user.remove("height");
+  print("User: $user");
+
+  //clear
 
 }
