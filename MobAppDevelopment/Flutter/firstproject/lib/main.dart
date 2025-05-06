@@ -1,4 +1,5 @@
-import 'package:firstproject/firstScreen.dart';
+// import 'package:firstproject/firstScreen.dart';
+import 'package:firstproject/scndScreen.dart';
 import 'package:flutter/material.dart';
 
 void main(){
@@ -6,7 +7,7 @@ void main(){
     MaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      home: FirstScreen()
+      home: ScndScreen()
     )
   );
 }
