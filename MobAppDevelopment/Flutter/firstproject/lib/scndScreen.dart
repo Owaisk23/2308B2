@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firstproject/drawerSide.dart' as drawerSide;
+
 
 class ScndScreen extends StatefulWidget {
   const ScndScreen({ Key? key }) : super(key: key);
@@ -75,6 +77,7 @@ class _ScndScreenState extends State<ScndScreen> {
           ],
         ),
       ),
+      drawer: drawerSide.DrawerSide(),
     );
   }
 }

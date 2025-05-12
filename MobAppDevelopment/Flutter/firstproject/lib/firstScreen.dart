@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firstproject/drawerSide.dart' as drawerSide;
+
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({Key? key}) : super(key: key);
@@ -256,7 +258,8 @@ class _FirstScreenState extends State<FirstScreen> {
             ],
           ),
         ),
-        )
+        ),
+        drawer: drawerSide.DrawerSide(),
     );
   }
 }
