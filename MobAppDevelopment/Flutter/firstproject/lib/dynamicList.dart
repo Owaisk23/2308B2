@@ -79,7 +79,7 @@ class _DynamicListState extends State<DynamicList> {
       appBar: AppBar(
         title: Text('Contact List'),
         backgroundColor: Colors.black87,
-        foregroundColor: Colors.white,
+        foregroundColor: const Color.fromARGB(255, 249, 238, 238),
         centerTitle: true,
       ),
       drawer: drawerSide.DrawerSide(),

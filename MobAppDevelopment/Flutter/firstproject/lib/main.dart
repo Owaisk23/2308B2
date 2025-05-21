@@ -1,4 +1,5 @@
 import 'package:device_preview/device_preview.dart';
+import 'package:firstproject/darazScreen.dart';
 import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/product.dart';
 import 'package:flutter/foundation.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: DynamicList(),
+      home: DarazScreen(),
     );
   }
 }
