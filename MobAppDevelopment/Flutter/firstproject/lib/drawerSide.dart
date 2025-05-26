@@ -1,3 +1,4 @@
+import 'package:firstproject/ApiProduct.dart';
 import 'package:firstproject/darazScreen.dart';
 import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/firstScreen.dart';
@@ -42,6 +43,13 @@ class _DrawerSideState extends State<DrawerSide> {
             title: Text('Scnd Screen'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ScndScreen()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.book),
+            title: Text('API Product Screen'),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ApiProduct()));
             },
           ),
           ListTile(

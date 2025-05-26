@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_link_previewer: ^3.2.2
   device_preview: ^1.2.0
+  http: ^1.4.0
 
 dev_dependencies:
   flutter_test:
