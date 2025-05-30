@@ -3,6 +3,7 @@ import 'package:firstproject/ApiProduct.dart';
 import 'package:firstproject/darazScreen.dart';
 import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/product.dart';
+import 'package:firstproject/signUp.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: ApiProduct(),
+      home: SignUp(),
     );
   }
 }

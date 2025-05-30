@@ -4,6 +4,7 @@ import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/firstScreen.dart';
 import 'package:firstproject/product.dart';
 import 'package:firstproject/scndScreen.dart';
+import 'package:firstproject/signUp.dart';
 import 'package:flutter/material.dart';
 
 class DrawerSide extends StatefulWidget {
@@ -46,7 +47,14 @@ class _DrawerSideState extends State<DrawerSide> {
             },
           ),
           ListTile(
-            leading: Icon(Icons.book),
+            leading: Icon(Icons.person),
+            title: Text('Sign Up Screen'),
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.phone),
             title: Text('API Product Screen'),
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => ApiProduct()));
