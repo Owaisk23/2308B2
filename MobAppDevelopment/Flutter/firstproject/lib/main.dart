@@ -4,6 +4,7 @@ import 'package:firstproject/darazScreen.dart';
 import 'package:firstproject/dynamicList.dart';
 import 'package:firstproject/product.dart';
 import 'package:firstproject/signUp.dart';
+import 'package:firstproject/splashScreen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      home: SplashScreen(),
+      routes: {
+        '/signUp': (context) => SignUp(),
+        '/product': (context) => Product(),
+        '/dynamicList': (context) => DynamicList(),
+        '/darazScreen': (context) => DarazScreen(),
+        '/apiProduct': (context) => ApiProduct(),
+      },
     );
   }
 }

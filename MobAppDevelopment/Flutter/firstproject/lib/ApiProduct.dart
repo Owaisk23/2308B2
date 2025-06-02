@@ -36,7 +36,7 @@ class _ApiProductState extends State<ApiProduct> {
         foregroundColor: Colors.white,
         centerTitle: true,
       ),
-      drawer: drawerSide.DrawerSide(),
+      // drawer: drawerSide.DrawerSide(),
       body: FutureBuilder(
         future: getProducts(),
         builder:(context, snapshot) {
