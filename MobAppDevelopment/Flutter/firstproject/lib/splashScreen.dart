@@ -15,7 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(Duration(seconds: 3), (){
       // Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ApiProduct()));
-      Navigator.pushReplacementNamed(context, '/apiProduct');
+      // Navigator.pushReplacementNamed(context, '/apiProduct');
+      Navigator.pushNamed(context, '/billCalculator');
     });
   }
   @override
