@@ -13,9 +13,7 @@ class Addproduct extends StatefulWidget {
 }
 
 class _AddproductState extends State<Addproduct> {
-  CollectionReference products = FirebaseFirestore.instance.collection(
-    'products',
-  );
+  CollectionReference products = FirebaseFirestore.instance.collection('products');
   TextEditingController titleController = TextEditingController();
   TextEditingController desController = TextEditingController();
   TextEditingController priceController = TextEditingController();
@@ -109,7 +107,7 @@ class _AddproductState extends State<Addproduct> {
                             ),
                           ),
 
-                          Navigator.pop(context),
+                          // Navigator.pop(context),
                         },
                       )
                       .catchError(
