@@ -1,0 +1,58 @@
+show dbs
+use dbname
+db.collname.insertOne({name:"pen",
+color:"blue",
+price:20,
+})
+
+//insertMany
+db.stationary.insertMany([{name: "Blue Pen", qty: 132, price: 20},{name: "Eraser", qty: 102, price: 30},{name: "Calculator", qty: 45, price: 250}])
+
+operators  "$":
+//greaterthan: gt
+//lessthan: lt
+//notequal: ne
+//less than equal to: lte
+//greater than equal to: gte
+in ["karachi", "Lahore","Hyderabad"]
+nin  ["karachi", "Lahore","Hyderabad"]
+and
+or
+not
+
+UPDATE:
+updateOne({kisko update krna ha},{kia update krna h})
+		Qutbuddin		Shamsuddin
+
+db.employees.updateOne(
+{name:"Qutbuddin Aibak"},
+{ $set:{name:"Shamsuddin Aibak",city:"Sialkot"}
+})
+
+
+db.employees.updateOne(
+{salary:1000},
+{ $set:{name:"Yaseen Ahmed",city:"Larkana"}
+});
+
+db.employees.updateMany(
+{salary:1000},
+{ $set:{name:"Yaseen Ahmed",city:"Larkana"}
+});
+
+
+updateMany({kisko update krna ha},{kia update krna h})
+		{}			isAvailable:true
+
+
+
+//joins
+
+db.employees.aggregate( [{ $lookup: { from: "departments", localField: "deptId", foreignField: "_id", as: "department" } }]);
+
+ db.employees.insertMany([{name:"Haris Naseer",salary:50000, deptId:ObjectId('689044924cefed2df5aceac8')} ,{name:"Owais Ahmed",salary:50000, deptId:ObjectId('689044924cefed2df5aceac9')}])
+
+ db.departments.insertMany([{deptName:"Academics",head:"Sir Hassan",aim:"To excel the academics"},{deptName:"Accounts",head:"Sir Mehmood",aim:"To ensure the flow of funds with accuracy and smoothness"},])
+
+
+
