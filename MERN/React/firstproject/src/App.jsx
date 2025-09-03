@@ -5,6 +5,7 @@ import Card from "./components/Card";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import Bulb from "./components/Bulb";
+import Todo from "./components/Todo";
 
 function App() {
 
@@ -88,17 +89,19 @@ function App() {
   return (
     <>
       <Navbar/>
-      <h1 className="heading bg-success">Hello In React</h1>
+      {/* <h1 className="heading bg-success">Hello In React</h1> */}
 
       {/* Use State start */}
-      <h2>{count}</h2>
+      {/* <h2>{count}</h2> */}
       {/* <button className="btn btn-primary" onClick={() => {setCount(count + 1)}}>Increment</button> */}
-      <button className="btn btn-primary" onClick={handleIncrementCount}>Increment</button>
+      {/* <button className="btn btn-primary" onClick={handleIncrementCount}>Increment</button>
 
       <h2>User Name: {user.name} User Age: {user.age} User Profession: {user.prfession}</h2>
-      <button className="btn btn-warning" onClick={updateUser}>Update User</button>
+      <button className="btn btn-warning" onClick={updateUser}>Update User</button> */}
 
-      <Bulb/>
+      <Todo/>
+
+      {/* <Bulb/> */}
 
       {/* Use State end */}
 
