@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { useState } from "react";
 import Bulb from "./components/Bulb";
 import Todo from "./components/Todo";
+import ApiFetch from "./components/ApiFetch";
 
 function App() {
 
@@ -99,7 +100,7 @@ function App() {
       <h2>User Name: {user.name} User Age: {user.age} User Profession: {user.prfession}</h2>
       <button className="btn btn-warning" onClick={updateUser}>Update User</button> */}
 
-      <Todo/>
+      {/* <Todo/> */}
 
       {/* <Bulb/> */}
 
@@ -129,6 +130,8 @@ function App() {
         }
        </div>
       <img src={KidsImg} alt="" /> */}
+
+      <ApiFetch/>
 
       <Footer/>
     </>

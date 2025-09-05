@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 const Todo = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(["Apple ", "Banana", "Mango"]);
   const [text, setText] = useState("");
 
   const addTodo = () => {
@@ -21,14 +21,14 @@ const Todo = () => {
       setList(copyList);
   }
   const deleteTodo = (index)=>{
-      // const updatedList = [...list];
-      // updatedList.splice(index, 1);
-      // setList(updatedList);
+      const updatedList = [...list];
+      updatedList.splice(index, 1);
+      setList(updatedList);
 
       // const newList = list.filter((item, i)=>  i !== index)
       // setList(newList)
 
-      setList(list.filter((item, i)=>  i !== index))
+    //   setList(list.filter((item, i)=>  i !== index))
   }
   return (
       <div>
@@ -37,7 +37,7 @@ const Todo = () => {
 
           {
               list.length > 0 ?
-              
+              //Condition
               list.map((item, index) => (
                   <div key={index} className='d-flex justify-content-between mt-3 align-item-center'>
                       <p>{index + 1}: {item}</p>
@@ -47,9 +47,11 @@ const Todo = () => {
                       </div>
                   </div>
               ))
+              //true block
               :
               <div>List is Empty</div>
-          }
+              //false block
+        }
           
       </div>
   )
