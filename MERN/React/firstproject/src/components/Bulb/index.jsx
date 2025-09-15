@@ -13,11 +13,11 @@ const Bulb = () => {
       </button>
       {isOn ? (
         <div className="img-container">
-          <img src={onBulb} alt="" />
+          <img src={onBulb} alt="" width={300} height={400} />
         </div>
       ) : (
         <div className="img-container">
-          <img src={offBulb} alt="" />
+          <img src={offBulb} alt="" width={300} height={400} />
         </div>
       )}
     </div>

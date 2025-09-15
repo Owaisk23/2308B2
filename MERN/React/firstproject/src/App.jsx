@@ -7,6 +7,10 @@ import { useState } from "react";
 import Bulb from "./components/Bulb";
 import Todo from "./components/Todo";
 import ApiFetch from "./components/ApiFetch";
+import { Link, Route, Routes } from "react-router";
+import Signup from "./components/Signup";
+import LogIn from "./components/LogIn";
+import AddProduct from "./components/AddProduct";
 
 function App() {
 
@@ -131,7 +135,40 @@ function App() {
        </div>
       <img src={KidsImg} alt="" /> */}
 
-      <ApiFetch/>
+      {/* <ApiFetch/> */}
+
+
+
+      {/* Routes */}
+  <Routes>
+    <Route path="/" element={<h1>Home Page</h1>}/>
+    <Route path="/bulb" element={<Bulb/>}/>
+    {/* <Route path="/card" element={<Card/>}/> */}
+    
+
+    {/* Group Routing & Nested Routing */}
+  <Route path="/admin/">
+    <Route path="signup" element={<Signup/>}/>
+    <Route path="login" element={<LogIn/>}/>
+
+    <Route path="products">
+      <Route path="add" element={<AddProduct/>}/>
+    </Route>
+  </Route>
+{/* Consider you have 4 roles
+admin has 4 group route
+seller has 2 group route
+buyer has 2 group route i.e 2 buyers
+employer has 3 group route i.e 3 employer */}
+
+  </Routes>
+
+
+
+
+
+
+
 
       <Footer/>
     </>
