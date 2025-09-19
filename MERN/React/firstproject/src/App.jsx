@@ -11,6 +11,7 @@ import { Link, Route, Routes } from "react-router";
 import Signup from "./components/Signup";
 import LogIn from "./components/LogIn";
 import AddProduct from "./components/AddProduct";
+import Parent from "./components/Parent";
 
 function App() {
 
@@ -141,7 +142,7 @@ function App() {
 
       {/* Routes */}
   <Routes>
-    <Route path="/" element={<h1>Home Page</h1>}/>
+    <Route path="/" element={<Parent />}/>
     <Route path="/bulb" element={<Bulb/>}/>
     {/* <Route path="/card" element={<Card/>}/> */}
     
