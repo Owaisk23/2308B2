@@ -1,7 +1,12 @@
 // const express = require('express')
 import express from 'express'
 import path from 'path'
-import { title } from 'process';
+import fs from 'node:fs'
+
+const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
+
+let products = data.products
+
 
 const app = express()
 const port = 3000
@@ -13,9 +18,9 @@ app.get('/', (req, res) => {
   res.send('Hello from 2308B2!')
 })
 
-app.get('/contact', (req, res) => {
-  res.send('Hello from contact page!')
-})
+// app.get('/contact', (req, res) => {
+//   res.send('Hello from contact page!')
+// })
 
 app.get('/pakwheels', (req, res) => {
   res.send('Hello from pakwheels page!')
@@ -61,6 +66,42 @@ app.get('/posts/:id', (req, res) => {
   })
   res.json(postObj)
 })
+
+//Query Paramter (They are optional)
+app.get('/categories', (req, res) => {
+  if(req.query.name){
+    res.json({name: "Category name is: " + req.query.name})
+  }else{
+    res.json({name: "No category name provided"})
+  }
+})
+
+//Request Body(They are used to send data to server)
+app.get('/contact', (req, res) => {
+  try{
+  //   const name = req.body.name;
+  // const age = req.body.age;
+  // const city = req.body.city;
+  // Destructuring
+  const {name, age, city} = req.body;
+  res.status(200).json({ name: name, age: age, city: city })
+
+  } catch(err){
+    res.status(500).json({message: "Server Error"})
+  }
+})
+
+app.get('/products', (req, res) => {
+  try{
+    res.status(200).json({message: "Showing our products", products: products})
+  }catch(err){
+    res.status(500).json({message: "Server Error"})
+  }
+
+})
+
+
+
 
 
 app.listen(port, () => {
