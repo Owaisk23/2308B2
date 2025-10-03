@@ -131,6 +131,7 @@ app.post('/addproduct', (req, res) => {
   }
 })
 
+// delete product
 app.delete('/deleteproduct/:id', (req, res) => {
   try{
     let productId = req.params.id;
