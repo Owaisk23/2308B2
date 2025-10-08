@@ -27,9 +27,41 @@ let singleProduct = (req, res) => {
   }
 }
 
+let addProduct = (req, res) => {
+  try{
+    let newProduct = req.body;
+    let addedProduct = products.push(newProduct)
+    console.log(addedProduct)
+    if(!addedProduct){
+      return res.status(404).json({message: "Product not added"})
+    }else{
+      res.status(200).json({message: "Product added successfully", product: newProduct})
+    }
+  }catch(err){
+    res.status(500).json({message: "Server Error"})
+  }
+}
+
+let deleteProduct = (req, res) => {
+  try{
+    let productId = req.params.id;
+    let productObj = products.find((product) => product.id == productId)
+    if(!productObj){
+      return res.status(404).json({message: "Product not found"})
+    }else{
+      products = products.filter((product) => product.id != productId)
+      res.status(200).json({message: "Product deleted successfully", product: productObj})
+    } 
+  }catch(err){
+    res.status(500).json({message: "Server Error"})
+  }
+}
+
 const productController = {
     index,
-    singleProduct
+    singleProduct,
+    addProduct,
+    deleteProduct
 }
 
 export default productController;

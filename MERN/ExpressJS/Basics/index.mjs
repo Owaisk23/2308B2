@@ -4,9 +4,9 @@ import path from 'path'
 import productRouter from './routes/productRoutes.mjs'
 import fs from 'node:fs'
 
-// const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
+const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
 
-// let products = data.products
+let products = data.products
 
 
 const app = express()
