@@ -3,17 +3,29 @@ import express from 'express'
 import path from 'path'
 import productRouter from './routes/productRoutes.mjs'
 import fs from 'node:fs'
+// const mongoose = require('mongoose');
+import mongoose from 'mongoose'
 
-const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
 
-let products = data.products
+// const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
+
+// let products = data.products
 
 
 const app = express()
 const port = 3000
 app.use(express.json());
 
-const dirname = path.resolve();
+main().catch(err => console.log(err));
+
+async function main() {
+  await mongoose.connect('mongodb+srv://owaisahmedkhan:owais123@cluster0.mbgw7ps.mongodb.net/Mart');
+
+  console.log("MongoDb Connected Successfully");
+  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+}
+
+// const dirname = path.resolve();
 
 // app.get('/', (req, res) => {
 //   res.send('Hello from 2308B2!')

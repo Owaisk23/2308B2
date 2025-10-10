@@ -1,13 +1,34 @@
 import fs from 'node:fs'
+import Product from '../models/productModel.mjs'
 
-const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
+// const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
 
-let products = data.products;
+// let products = data.products;
 
-let index = (req, res) => {
+// let index = (req, res) => {
+//   try{
+//     res.status(200).json({message: "Showing our products", products: products})
+//   }catch(err){
+//     res.status(500).json({message: "Server Error"})
+//   }
+
+// }
+
+// fetch data from mongodb
+let index = async(req, res) => {
   try{
-    res.status(200).json({message: "Showing our products", products: products})
+
+    const products = await Product.find();
+
+    if(products.length > 0){
+      res.status(200).json({message: "Showing products from DB", products: products});
+    }
+    else{
+      res.status(404).json({message: "No product found."});
+    }
+
   }catch(err){
+    console.log(err);
     res.status(500).json({message: "Server Error"})
   }
 
