@@ -68,7 +68,7 @@ const product = new Product({
       title,
       description,
       price,
-      discountPercentage,
+      discountedPercentage,
       rating,
       stock,
       brand,
@@ -131,7 +131,7 @@ const productController = {
     index,
     create,
     singleProduct,
-    addProduct,
+    // addProduct,
     deleteProduct,
 }
 
