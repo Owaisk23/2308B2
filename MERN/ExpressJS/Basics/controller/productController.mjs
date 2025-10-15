@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import Product from '../models/productModel.mjs'
+// import Student from '../models/studentModel.mjs';
 
 // const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
 
@@ -48,20 +49,68 @@ let singleProduct = (req, res) => {
   }
 }
 
-let addProduct = (req, res) => {
+let create = async (req, res) => {
   try{
-    let newProduct = req.body;
-    let addedProduct = products.push(newProduct)
-    console.log(addedProduct)
-    if(!addedProduct){
-      return res.status(404).json({message: "Product not added"})
-    }else{
-      res.status(200).json({message: "Product added successfully", product: newProduct})
+    const {
+      title,
+      description,
+      price,
+      discountedPercentage,
+      rating,
+      stock,
+      brand,
+      category,
+      thumbnail,
+      images
+    } = req.body;
+    
+const product = new Product({
+      title,
+      description,
+      price,
+      discountPercentage,
+      rating,
+      stock,
+      brand,
+      category,
+      thumbnail,
+      images
+    });
+
+    // mongoose method to save data to database
+    const addProd = await product.save();
+    // mongodb method to save data to database
+    // let addProd = await Product.insertOne(product);
+
+    res.status(201).json({
+      message: "Product created successfully",
+      product: addProd
+    });
+
+  } catch (error) {
+    console.log(error);
+
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ message: error.message });
     }
-  }catch(err){
-    res.status(500).json({message: "Server Error"})
+
+    res.status(500).json({ message: error.message });
   }
-}
+};
+// let addProduct = (req, res) => {
+//   try{
+//     let newProduct = req.body;
+//     let addedProduct = products.push(newProduct)
+//     console.log(addedProduct)
+//     if(!addedProduct){
+//       return res.status(404).json({message: "Product not added"})
+//     }else{
+//       res.status(200).json({message: "Product added successfully", product: newProduct})
+//     }
+//   }catch(err){
+//     res.status(500).json({message: "Server Error"})
+//   }
+// }
 
 let deleteProduct = (req, res) => {
   try{
@@ -80,9 +129,10 @@ let deleteProduct = (req, res) => {
 
 const productController = {
     index,
+    create,
     singleProduct,
     addProduct,
-    deleteProduct
+    deleteProduct,
 }
 
 export default productController;
