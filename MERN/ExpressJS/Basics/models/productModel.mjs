@@ -11,7 +11,7 @@ const productSchema = new Schema({
   discountedPercentage: {
     type: Number,
     min: [0, "Minimum discount of product must be 0"],
-    required: [true, "Discount is required"],
+    // required: [true, "Discount is required"],
     max: [50, "Maximum discount of product must be under 50"],
   },
   rating: {

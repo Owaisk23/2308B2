@@ -5,6 +5,9 @@ import productRouter from './routes/productRoutes.mjs'
 import fs from 'node:fs'
 // const mongoose = require('mongoose');
 import mongoose from 'mongoose'
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 
 // const data = JSON.parse(fs.readFileSync('data.json', 'utf-8'))
