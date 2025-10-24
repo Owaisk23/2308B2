@@ -16,41 +16,41 @@ import Product from '../models/productModel.mjs'
 // }
 
 // fetch data from mongodb
-let index = async(req, res) => {
-  try{
+let index = async (req, res) => {
+  try {
 
     const products = await Product.find();
 
-    if(products.length > 0){
-      res.status(200).json({message: "Showing products from DB", products: products});
+    if (products.length > 0) {
+      res.status(200).json({ message: "Showing products from DB", products: products });
     }
-    else{
-      res.status(404).json({message: "No product found."});
+    else {
+      res.status(404).json({ message: "No product found." });
     }
 
-  }catch(err){
+  } catch (err) {
     console.log(err);
-    res.status(500).json({message: "Server Error"})
+    res.status(500).json({ message: "Server Error" })
   }
 
 }
 
 let singleProduct = (req, res) => {
-  try{
+  try {
     let productId = req.params.id;
     let productObj = products.find((product) => product.id == productId)
-    if(!productObj){
-      return res.status(404).json({message: "Product not found"})
-    }else{
-      res.status(200).json({message: "Showing product no: " + productId, product: productObj})
+    if (!productObj) {
+      return res.status(404).json({ message: "Product not found" })
+    } else {
+      res.status(200).json({ message: "Showing product no: " + productId, product: productObj })
     }
-  }catch(err){
-    res.status(500).json({message: "Server Error"})
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" })
   }
 }
 
 let create = async (req, res) => {
-  try{
+  try {
     const {
       title,
       description,
@@ -63,8 +63,8 @@ let create = async (req, res) => {
       thumbnail,
       images
     } = req.body;
-    
-const product = new Product({
+
+    const product = new Product({
       title,
       description,
       price,
@@ -113,64 +113,109 @@ const product = new Product({
 // }
 
 let deleteProduct = (req, res) => {
-  try{
+  try {
     let productId = req.params.id;
     let productObj = products.find((product) => product.id == productId)
-    if(!productObj){
-      return res.status(404).json({message: "Product not found"})
-    }else{
+    if (!productObj) {
+      return res.status(404).json({ message: "Product not found" })
+    } else {
       products = products.filter((product) => product.id != productId)
-      res.status(200).json({message: "Product deleted successfully", product: productObj})
-    } 
-  }catch(err){
-    res.status(500).json({message: "Server Error"})
+      res.status(200).json({ message: "Product deleted successfully", product: productObj })
+    }
+  } catch (err) {
+    res.status(500).json({ message: "Server Error" })
   }
 }
 
- let addProductWithImage=async(req,res)=>{
-try {
-console.log(req.file)
-console.log(req.file.path);
-let newProduct = new Product({
-     title:req.body.title,
-        description:req.body.description,
-        price:req.body.price,
-        discountPercentage:req.body.discountPercentage,
-        rating:req.body.rating,
-        stock:req.body.stock,
-        brand:req.body.brand,
-        category:req.body.category,
-        thumbnail:req.file.path,
-        images:req.file.path
+//  let addProductWithImage=async(req,res)=>{
+// try {
+// console.log(req.file)
+// console.log(req.file.path);
+// let newProduct = new Product({
+//      title:req.body.title,
+//         description:req.body.description,
+//         price:req.body.price,
+//         discountPercentage:req.body.discountPercentage,
+//         rating:req.body.rating,
+//         stock:req.body.stock,
+//         brand:req.body.brand,
+//         category:req.body.category,
+//         thumbnail:req.file.path,
+//         images:req.file.path
 
-});
+// });
 
-let addprod = await Product.insertOne(newProduct);
-if (!addprod) {
-       res.status(404).json({message:"Failed to add product"});
-} else {
+// let addprod = await Product.insertOne(newProduct);
+// if (!addprod) {
+//        res.status(404).json({message:"Failed to add product"});
+// } else {
 
-    res.status(200).json({
-    message:"Product added successfully",
-    product:addprod,
-})
-} 
+//     res.status(200).json({
+//     message:"Product added successfully",
+//     product:addprod,
+// })
+// } 
 
 
 
-} catch (error) {
-   console.log(error) ;
-   res.status(500).json({message:"Internal server errror"});
-}
+// } catch (error) {
+//    console.log(error) ;
+//    res.status(500).json({message:"Internal server errror"});
+// }
+// }
+
+// image
+let addProductWithImage = async (req, res) => {
+  try {
+    console.log(req.files)
+    let imagesArray = []
+    req.files.forEach(element => {
+      console.log("element", element.path)
+      imagesArray.push(element.path);
+    });
+    console.log(imagesArray)
+
+    // console.log(req.file.path);
+    let newProduct = new Product({
+      title: req.body.title,
+      description: req.body.description,
+      price: req.body.price,
+      discountPercentage: req.body.discountPercentage,
+      rating: req.body.rating,
+      stock: req.body.stock,
+      brand: req.body.brand,
+      category: req.body.category,
+      thumbnail: imagesArray[0],
+      images: imagesArray
+
+    });
+
+    let addprod = await Product.insertOne(newProduct);
+    if (!addprod) {
+      res.status(404).json({ message: "Failed to add product" });
+    } else {
+
+      res.status(200).json({
+        message: "Product added successfully",
+        product: addprod,
+      })
+    }
+
+
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server errror" });
+  }
 }
 
 const productController = {
-    index,
-    create,
-    singleProduct,
-    // addProduct,
-    deleteProduct,
-    addProductWithImage
+  index,
+  create,
+  singleProduct,
+  // addProduct,
+  deleteProduct,
+  addProductWithImage
 }
 
 export default productController;
