@@ -6,6 +6,7 @@ import fs from 'node:fs'
 // const mongoose = require('mongoose');
 import mongoose from 'mongoose'
 import dotenv from 'dotenv';
+import userRouter from './routes/userRoutes.mjs'
 
 dotenv.config();
 
@@ -164,6 +165,7 @@ async function main() {
 // })
 
 app.use("/products", productRouter)
+app.use("/user",userRouter)
 
 app.listen(port, () => {
   console.log(`Sever listening on port ${port}`)
